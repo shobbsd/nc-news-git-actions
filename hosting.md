@@ -73,7 +73,7 @@ At the top of your `knexfile.js`, add the following line of code:
 const { DB_URL } = process.env;
 ```
 
-Then add a `production` key to the `customConfigs` object:
+Then add a `production` key to the `customConfigs` object
 
 ```js
 const { DB_URL } = process.env;
@@ -81,8 +81,8 @@ const { DB_URL } = process.env;
 const customConfigs = {
   // ...
   production: {
-    connection: `${DB_URL}?ssl=true`,
-  },
+    connection: `${DB_URL}?ssl=true`
+  }
 };
 // ...
 ```
@@ -122,13 +122,13 @@ npm run seed:prod
 Change your connection file to look something like this:
 
 ```js
-const ENV = process.env.NODE_ENV || 'development';
-const knex = require('knex');
+const ENV = process.env.NODE_ENV || "development";
+const knex = require("knex");
 
 const dbConfig =
-  ENV === 'production'
-    ? { client: 'pg', connection: process.env.DATABASE_URL }
-    : require('../knexfile');
+  ENV === "production"
+    ? { client: "pg", connection: process.env.DATABASE_URL }
+    : require("../knexfile");
 
 module.exports = knex(dbConfig);
 ```

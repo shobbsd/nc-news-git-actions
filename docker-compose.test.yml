@@ -1,7 +1,10 @@
-version: '3.7'
+version: "3.7"
 services:
   web:
-    build: .
+    # image: ${WEB_IMAGE}
+    build:
+      context: .
+      dockerfile: Dockerfile.test
     environment:
       NODE_ENV: production
       PORT: 3000
@@ -10,12 +13,12 @@ services:
       - 3000:3000
     depends_on:
       - postgres
-    command: npm test
+    command: ["./wait-for-it.sh", "postgres:5432", "--", "npm", "test"]
 
   postgres:
     image: postgres
     ports:
-      - '35432:5432'
+      - "35432:5432"
     environment:
       POSTGRES_USER: nc_psql
       POSTGRES_PASSWORD: password
