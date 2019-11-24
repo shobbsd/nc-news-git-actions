@@ -1,7 +1,7 @@
-version: '3.7'
+version: "3.7"
 services:
   web:
-    build: .
+    image: ${WEB_IMAGE}
     environment:
       NODE_ENV: production
       PORT: 3000
@@ -15,7 +15,7 @@ services:
   postgres:
     image: postgres
     ports:
-      - '35432:5432'
+      - "35432:5432"
     environment:
       POSTGRES_USER: nc_psql
       POSTGRES_PASSWORD: password
