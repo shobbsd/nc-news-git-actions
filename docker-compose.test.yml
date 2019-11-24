@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  web:
+    build: .
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: postgres://nc_psql:password@postgres:5432/nc_news
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+    command: npm test
+
+  postgres:
+    image: postgres
+    ports:
+      - '35432:5432'
+    environment:
+      POSTGRES_USER: nc_psql
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: nc_news
