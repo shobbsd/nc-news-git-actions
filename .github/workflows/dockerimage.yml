@@ -16,4 +16,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag nc-news-be:latest
     - name: Test the Docker image
-      run: WEB_IMAGE=nc-news-be:latest docker-compose --file docker-compose.test up
+      run: WEB_IMAGE=nc-news-be:latest docker-compose --file docker-compose.test.yml up
