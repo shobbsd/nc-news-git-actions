@@ -10,7 +10,9 @@ services:
       - 3000:3000
     depends_on:
       - postgres
-    command: npm test
+    command: |
+      npm install 
+      npm test
 
   postgres:
     image: postgres
